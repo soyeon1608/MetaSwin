@@ -93,6 +93,12 @@ model = MetaSwin(img_size=(96,96,96),
 
 The above MetaSwin model is used for CT images (1-channel input) with input image size ```(96, 96, 96)``` and for ```14``` class segmentation outputs and feature size of  ```48```.
 
+To train a `MetaSwin` from scratch on a single GPU:
+
+```bash
+python main.py --json_list=<json-path> --data_dir=<data-path> --feature_size=<featrue-size> --noamp\
+--roi_x=96 --roi_y=96 --roi_z=96 --batch_size=<batch-size> --max_epochs=<total-num-epochs> --save_checkpoint
+
 # Evaluation
 
 To evaluate a `MetaSwin` on a single GPU, the model path using `pretrained_dir` and model
