@@ -1,6 +1,6 @@
 # Model Overview
 The study keenly recognizes the limitations of [SwinUNETR](https://arxiv.org/pdf/2201.01266.pdf) [1] and presents a creative method by integrating the [Metaformer](https://doi.org/10.48550/arXiv.2111.11418) [2]'s idea of replacing attention blocks with average pooling layers. This approach efficiently reduces computational requirements while maintaining performance. Additionally, the inclusion of the Squeeze-and-Excitation (SE) Block skillfully captures crucial global information in a flexible way.This repository contains the code for [MetaSwin] for the task of brain tumor segmentation using the [BraTS 23](https://www.synapse.org/#!Synapse:syn51156910/wiki/621282) challenge dataset [3,4]. The architecture of MetaSwin is demonstrated as below
-![image](./assets/figure 1.png)
+![figure 1](https://github.com/soyeon1608/MetaSwin/assets/100922793/3eda3191-00b4-4242-a9f9-06328f9bc2eb)
 
 # Installing Dependencies
 MONAI installation
@@ -27,11 +27,7 @@ Challenge: RSNA-ASNR-MICCAI Brain Tumor Segmentation (BraTS) Challenge
 
 - Download the json file from this [link](https://github.com/soyeon1608/MetaSwin/tree/main/assets) and placed in the same folder as the dataset.
 
-
-Ample multi-institutional routine clinically-acquired multi-parametric MRI (mpMRI) scans of glioma, are used as the training, validation, and testing data for this year’s BraTS challenge.
-
 All BraTS mpMRI scans are available as NIfTI files (.nii.gz) and describe (a) native (T1) and (b) post-contrast T1-weighted (T1Gd), (c) T2-weighted (T2), and (d) T2 Fluid Attenuated Inversion Recovery (T2-FLAIR) volumes, and were acquired with different clinical protocols and various scanners from multiple data contributing institutions.
-
 All the imaging datasets have been annotated manually, by one to four raters, following the same annotation protocol, and their annotations were approved by experienced neuro-radiologists. Annotations comprise the GD-enhancing tumor (ET — label 3), the peritumoral edematous/invaded tissue (ED — label 2), and the necrotic tumor core (NCR — label 1), as described in the latest BraTS summarizing paper. The ground truth data were created after their pre-processing, i.e., co-registered to the same anatomical template, interpolated to the same resolution (1 mm3) and skull-stripped.
 
 This year the naming convention and name mapping between the data of BraTS'22-'17 is provided, and the subjects used from the data collections of TCGA-GBM, TCGA-LGG, IvyGAP, and CPTAC-GBM, available through The Cancer Imaging Archive (TCIA) to further facilitate research beyond the directly BraTS related tasks.
@@ -40,7 +36,7 @@ The sub-regions considered for evaluation are the "enhancing tumor" (ET), the "t
 
 The provided segmentation labels have values of 1 for NCR, 2 for ED, 3 for ET, and 0 for everything else.
 
-![image](./assets/brats2023.png)
+![brats2023](https://github.com/soyeon1608/MetaSwin/assets/100922793/e3ecb4c0-3a22-4776-bed4-d7ad029fdbb0)
 
 Figure from [Adewole et al.](https://arxiv.org/ftp/arxiv/papers/2305/2305.19369.pdf) [2]
 
@@ -77,7 +73,7 @@ model = MetaSwin(img_size=(128,128,128),
 
 The above MetaSwin model is used for multi-modal MR images (4-channel input) with input image size ```(128, 128, 128)``` and for ```3``` class segmentation outputs and feature size of  ```48```.
 
-To train a `Swin UNETR` from scratch on a single GPU:
+To train a `MetaSwin` from scratch on a single GPU:
 
 ```bash
 python main_MetaSwin.py --json_list=<json-path> --data_dir=<data-path> --val_every=5 --noamp \
@@ -100,9 +96,8 @@ model = MetaSwin(img_size=(96,96,96),
 The above MetaSwin model is used for CT images (1-channel input) with input image size ```(96, 96, 96)``` and for ```14``` class segmentation outputs and feature size of  ```48```.
 
 # Evaluation
-## ```BraTS 2023```
 
-To evaluate a `Swin UNETR` on a single GPU, the model path using `pretrained_dir` and model
+To evaluate a `MetaSwin` on a single GPU, the model path using `pretrained_dir` and model
 name using `--pretrained_model_name` need to be provided:
 
 ```bash
@@ -116,7 +111,7 @@ By following the commands for evaluating `MetaSwin` in the above, `test.py` save
 in the original spacing in a new folder based on the name of the experiment which is passed by `--exp_name`.
 
 # Visualization
-![image](./assets/visualization.png)
+![Visualization](https://github.com/soyeon1608/MetaSwin/assets/100922793/0e91d938-8286-41ed-a543-557b55e1f04d)
 
 # References
 [1]: Hatamizadeh, Ali, et al. "Swin unetr: Swin transformers for semantic segmentation of brain tumors in mri images." International MICCAI Brainlesion Workshop. Cham: Springer International Publishing, 2021.
