@@ -75,7 +75,7 @@ To train a `MetaSwin` from scratch on a single GPU:
 
 ```bash
 python main_MetaSwin.py --json_list=<json-path> --data_dir=<data-path> --val_every=5 --noamp \
---roi_x=128 --roi_y=128 --roi_z=128  --in_channels=4 --spatial_dims=3 --feature_size=48
+--roi_x=128 --roi_y=128 --roi_z=128  --in_channels=4 --spatial_dims=3 --feature_size=48 --save_checkpoint
 ```
 
 ## ```BTCV```
@@ -98,6 +98,7 @@ To train a `MetaSwin` from scratch on a single GPU:
 ```bash
 python main.py --json_list=<json-path> --data_dir=<data-path> --feature_size=<featrue-size> --noamp\
 --roi_x=96 --roi_y=96 --roi_z=96 --batch_size=<batch-size> --max_epochs=<total-num-epochs> --save_checkpoint
+```
 
 # Evaluation
 
